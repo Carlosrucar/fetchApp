@@ -49,11 +49,9 @@ export default class ModalEvents {
         this.registerPassword = document.getElementById('registerPassword');
 
         this.modalView = document.getElementById('viewModal');
-        this.viewCreatedAt = document.getElementById('viewCreatedAt');
         this.viewId = document.getElementById('viewId');
         this.viewName = document.getElementById('viewName');
         this.viewPrice = document.getElementById('viewPrice');
-        this.viewUpdatedAt = document.getElementById('viewUpdatedAt');
 
         this.gamesError = document.getElementById('gamesError');
         this.gamesSuccess = document.getElementById('gamesSuccess');
@@ -103,11 +101,9 @@ export default class ModalEvents {
 
         this.modalView.addEventListener('show.bs.modal', event => {
             document.getElementById('modalViewWarning').style.display = 'none';
-            this.viewCreatedAt.value = '';
             this.viewId.value = event.relatedTarget.dataset.id;
             this.viewName.value = event.relatedTarget.dataset.name;
             this.viewPrice.value = event.relatedTarget.dataset.price;
-            this.viewUpdatedAt.value = '';
             const url = event.relatedTarget.dataset.url;
             this.httpClient.get(
                 url,
@@ -269,13 +265,11 @@ export default class ModalEvents {
         console.log('register ' + data);
     }
 
-    responseShow(data) {
-        const { id, name, price, created_at, updated_at } = data.games;
-        this.viewCreatedAt.value = this.formattedDate(created_at);
+     responseShow(data) {
+        const { id, name, price } = data.game; 
         this.viewId.value = id;
         this.viewName.value = name;
         this.viewPrice.value = price;
-        this.viewUpdatedAt.value = this.formattedDate(updated_at);
     }
 
     init() {

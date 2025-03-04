@@ -332,9 +332,12 @@ h1 {
             <p class="lead">
                 Tercera versión de la misma aplicación de games: fetch (ajax).
             </p>
-            <div class="alert alert-success" role="alert" id="gamesSuccess">Successfully done.</div>
-            <div class="alert alert-danger" role="alert" id="gamesError">Error doing.</div>
+
+            <div class="alert alert-success" role="alert" id="gamesSuccess">Todo ha salido como se esperaba.</div>
+            <div class="alert alert-danger" role="alert" id="gamesError">A ocurrido un error.</div>
+            
             <!-- dynamic content -->
+             
             <div id="content"></div>
             <nav>
                 <!--dynamic pagination content -->

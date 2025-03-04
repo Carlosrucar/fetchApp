@@ -33,7 +33,7 @@ class GameController extends Controller {
             $message = '';
             $result = Game::change($request);
             if ($result) {
-                $games = Game::orderBy('name')->paginate(10)->setPath(url('game')); // Cambiado de 'games' a 'game'
+                $games = Game::orderBy('name')->paginate(10)->setPath(url('game'));
             } else {
                 $message = 'Error saving the game';
             }
@@ -45,7 +45,7 @@ class GameController extends Controller {
     }
     public function show($id) {
         return response()->json([
-            'game' => Game::find($id)  // Changed from 'product' to 'game'
+            'game' => Game::find($id)  
         ]);
     }
     

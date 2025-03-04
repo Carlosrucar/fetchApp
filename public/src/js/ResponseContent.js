@@ -72,6 +72,8 @@ export default class ResponseContent {
         }
     }
 
+    
+
     setCurrentUserContent(user) {
         if (!user || !user.name) {
             console.error('Invalid user object:', user);

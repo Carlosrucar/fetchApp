@@ -148,14 +148,6 @@
                         <label for="viewPrice" class="form-label">Price</label>
                         <input disabled readonly type="number" class="form-control" id="viewPrice">
                     </div>
-                    <div class="mb-3">
-                        <label for="viewCreatedAt" class="form-label">Created at</label>
-                        <input disabled readonly type="datetime" class="form-control" id="viewCreatedAt">
-                    </div>
-                    <div class="mb-3">
-                        <label for="viewUpdatedAt" class="form-label">Updated at</label>
-                        <input disabled readonly type="datetime" class="form-control" id="viewUpdatedAt">
-                    </div>
                 </form>
             </div>
             <div class="alert alert-warning" role="alert" id="modalViewWarning">An error ocurred. Games not found.
