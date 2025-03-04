@@ -204,8 +204,10 @@ export default class ModalEvents {
         if(data.result) {
             this.gamesSuccess.style.display = 'block';
             bootstrap.Modal.getInstance(this.modalCreate).hide();
-            document.getElementById('createForm').reset(); 
-            this.responseCommonContent(data);
+            document.getElementById('createForm').reset();
+            this.httpClient.get('/game', {}, (refreshData) => {
+                this.responseCommonContent(refreshData);
+            });
             setTimeout(() => {
                 this.gamesSuccess.style.display = 'none';
             }, 4000);
@@ -216,7 +218,9 @@ export default class ModalEvents {
         if (data.result) {
             this.gamesSuccess.style.display = 'block';
             bootstrap.Modal.getInstance(this.modalDelete).hide();
-            this.responseCommonContent(data);
+            this.httpClient.get('/game', {}, (refreshData) => {
+                this.responseCommonContent(refreshData);
+            });
             setTimeout(() => {
                 this.gamesSuccess.style.display = 'none';
             }, 4000);
@@ -229,7 +233,9 @@ export default class ModalEvents {
         if (data.result) {
             this.gamesSuccess.style.display = 'block';
             bootstrap.Modal.getInstance(this.modalEdit).hide();
-            this.responseCommonContent(data);
+            this.httpClient.get('/game', {}, (refreshData) => {
+                this.responseCommonContent(refreshData);
+            });
             setTimeout(() => {
                 this.gamesSuccess.style.display = 'none';
             }, 4000);
@@ -242,7 +248,11 @@ export default class ModalEvents {
         if (data.result) {
             bootstrap.Modal.getInstance(this.modalLogin).hide();
             this.responseContent.setUserContent(data.user);
-            this.logoutLinkListener();
+            this.httpClient.get('/game', {}, (gameData) => {
+                if (gameData.games && gameData.user) {
+                    this.responseCommonContent(gameData);
+                }
+            });
         }
     }
 

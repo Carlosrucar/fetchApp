@@ -22,24 +22,23 @@ export default class ResponseContent {
         return this.currentPage;
     }
 
-        setContent(result) {
+    setContent(result) {
         this.cleanContent(this.content);
         this.cleanContent(this.paginationContent);
     
         this.currentPage = result.games.current_page;
         this.setUserContent(result.user);
     
-        // Create button - moved before the table
-        const buttonCreate = document.createElement('button');
-        buttonCreate.textContent = 'Crear Nuevo';
-        buttonCreate.setAttribute('data-bs-toggle', 'modal');
-        buttonCreate.setAttribute('data-bs-target', '#createModal');
-        buttonCreate.classList.add('btn', 'btn-success', 'mb-3');
-        buttonCreate.dataset.url = "/game";
-        buttonCreate.dataset.method = "post";
-        this.content.appendChild(buttonCreate);
-    
-        // Table header
+        if (result.user) {
+            const buttonCreate = document.createElement('button');
+            buttonCreate.textContent = 'Crear Nuevo';
+            buttonCreate.setAttribute('data-bs-toggle', 'modal');
+            buttonCreate.setAttribute('data-bs-target', '#createModal');
+            buttonCreate.classList.add('btn', 'btn-success', 'mb-3');
+            buttonCreate.dataset.url = "/game";
+            buttonCreate.dataset.method = "post";
+            this.content.appendChild(buttonCreate);
+        }
         const headerRow = document.createElement('div');
         headerRow.classList.add('row', 'mb-3', 'fw-bold', 'border-bottom', 'pb-2');
         
@@ -60,7 +59,7 @@ export default class ResponseContent {
         });
     
         result.games.data.forEach(element => { 
-            this.responseRow.add(element);
+            this.responseRow.add(element, result.user);
         });
     }
     
